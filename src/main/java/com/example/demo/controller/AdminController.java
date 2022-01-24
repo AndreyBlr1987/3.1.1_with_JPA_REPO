@@ -75,8 +75,6 @@ public class AdminController {
         user.setRoles(roleService.getSetOfRoles(roles));
         userService.add(user);
         return "redirect:/admin";
-
-
     }
 
     @GetMapping(value = "/delete/{id}")

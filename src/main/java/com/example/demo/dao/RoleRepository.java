@@ -14,10 +14,10 @@ import java.util.Optional;
 @Repository
 public interface RoleRepository extends JpaRepository <Role, Integer> {
 
-    Optional<Role> findByRole(String name);
+    Role findByRole(String name);
 
-    @Query( "SELECT  r from Role r where r.role=:name")
-    Role getRoleByRole(String name);
+//    @Query( "SELECT  r from Role r where r.role=:name")
+//    Role getRoleByRole(String name);
 
 
 }

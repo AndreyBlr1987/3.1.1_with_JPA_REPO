@@ -13,13 +13,12 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
+
     private UserRepository userRepository;
-    private RoleRepository roleRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
     }
 
     @Override
@@ -45,6 +44,9 @@ public class UserServiceImpl implements UserService {
     public void edit(User user) {
         userRepository.save(user);
     }
+
+
+
 
 
     @Override

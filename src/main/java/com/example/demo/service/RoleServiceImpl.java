@@ -31,27 +31,23 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-
-    public Role getRoleByName(String name) {
-        return roleRepository.getRoleByRole(name);
+    public Role findByRole(String name) {
+        return roleRepository.findByRole(name);
     }
 
 
 
     @Override
-
-
     public HashSet<Role> getSetOfRoles(String[] roleNames) {
         Set<Role> roleSet = new HashSet<>();
         for (String role : roleNames) {
-            roleSet.add(getRoleByName(role));
+            roleSet.add(findByRole(role));
             }
         return (HashSet) roleSet;
     }
 
-
     @Override
-    public void add(Role role) {
+    public void addRole(Role role) {
         roleRepository.save(role);
     }
 

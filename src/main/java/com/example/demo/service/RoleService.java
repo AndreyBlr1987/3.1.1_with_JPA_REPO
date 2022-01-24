@@ -11,11 +11,11 @@ public interface RoleService {
 
     List<Role> getAllRoles();
 
-    Role getRoleByName(String name);
+    Role findByRole(String name);
 
     HashSet<Role> getSetOfRoles(String[] roleNames);
 
-    void add(Role role);
+    void addRole(Role role);
 
     void edit(Role role);
 
