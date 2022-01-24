@@ -35,8 +35,6 @@ public class RoleServiceImpl implements RoleService {
         return roleRepository.findByRole(name);
     }
 
-
-
     @Override
     public HashSet<Role> getSetOfRoles(String[] roleNames) {
         Set<Role> roleSet = new HashSet<>();
@@ -44,17 +42,6 @@ public class RoleServiceImpl implements RoleService {
             roleSet.add(findByRole(role));
             }
         return (HashSet) roleSet;
-    }
-
-    @Override
-    public void addRole(Role role) {
-        roleRepository.save(role);
-    }
-
-    @Override
-    public void edit(Role role) {
-        roleRepository.save(role);
-
     }
 
     @Override

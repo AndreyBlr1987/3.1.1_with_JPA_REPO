@@ -15,9 +15,7 @@ public interface RoleService {
 
     HashSet<Role> getSetOfRoles(String[] roleNames);
 
-    void addRole(Role role);
 
-    void edit(Role role);
 
     Role getById(int id);
 
