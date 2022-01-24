@@ -5,6 +5,7 @@ import com.example.demo.entity.Role;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 public interface RoleService {
 
@@ -19,4 +20,5 @@ public interface RoleService {
     void edit(Role role);
 
     Role getById(int id);
+
 }

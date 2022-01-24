@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.UserRepository;
 import com.example.demo.entity.User;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
@@ -25,6 +26,8 @@ public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
 
+
+
     @Autowired
     public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
@@ -47,13 +50,7 @@ public class AdminController {
         return "editPage";
     }
 
-    @PostMapping("/edit")
-    public String editUser(@ModelAttribute User user,
-                           @RequestParam("roles") String[] role) {
-        user.setRoles(roleService.getSetOfRoles(role));
-        userService.edit(user);
-        return "redirect:/admin";
-    }
+
 
     @GetMapping(value = "/add")
     public String addPage(Model model) {
@@ -63,12 +60,23 @@ public class AdminController {
         return "new";
     }
 
+    @PostMapping("/edit")
+    public String editUser(@ModelAttribute User user,
+                           @RequestParam("roles") String[] role) {
+        user.setRoles(roleService.getSetOfRoles(role));
+        userService.edit(user);
+        return "redirect:/admin";
+    }
+
+
     @PostMapping(value = "/add")
     public String addUser(@ModelAttribute User user,
                           @RequestParam(value = "roles") String[] roles) {
         user.setRoles(roleService.getSetOfRoles(roles));
         userService.add(user);
         return "redirect:/admin";
+
+
     }
 
     @GetMapping(value = "/delete/{id}")

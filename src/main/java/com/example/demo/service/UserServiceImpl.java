@@ -1,58 +1,62 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.UserDao;
+import com.example.demo.dao.RoleRepository;
+import com.example.demo.dao.UserRepository;
 import com.example.demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+    private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    public UserServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     @Override
     @Transactional
     public List<User> allUsers() {
-        return userDao.allUsers();
+        return userRepository.findAll();
     }
 
     @Override
     @Transactional
     public void add(User user) {
-        userDao.add(user);
+        userRepository.save(user);
     }
 
     @Override
     @Transactional
     public void delete(User user) {
-        userDao.delete(user);
+        userRepository.delete(user);
     }
 
     @Override
     @Transactional
     public void edit(User user) {
-        userDao.edit(user);
+        userRepository.save(user);
     }
 
+
     @Override
-    @Transactional
     public User getById(int id) {
-        return userDao.getById(id);
+        Optional<User> optionalUser = userRepository.findById(id);
+        return optionalUser.get();
+
     }
 
     @Override
-    public User getUserByName(String name) {
-        return userDao.getUserByName(name);
+    public User getUserByName(String email) {
+        return userRepository.findByEmail(email);
     }
 }
 
