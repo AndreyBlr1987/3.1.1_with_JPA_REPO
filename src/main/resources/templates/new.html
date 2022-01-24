@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/admin/add}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin/add}" th:object="${user}">
     <label for="name">Enter user name: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <br>
