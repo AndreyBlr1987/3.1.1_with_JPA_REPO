@@ -19,10 +19,12 @@ public class Role implements GrantedAuthority {
     @Column(name = "id")
     private int id;
 
+
     @Column(name = "role")
     private String role;
 
     @ManyToMany(mappedBy = "roles")
+
     Set<User> users;
 
     public Role() {

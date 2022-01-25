@@ -13,7 +13,6 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-
     private UserRepository userRepository;
 
     @Autowired
@@ -45,15 +44,10 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-
-
-
-
     @Override
     public User getById(int id) {
         Optional<User> optionalUser = userRepository.findById(id);
         return optionalUser.get();
-
     }
 
     @Override

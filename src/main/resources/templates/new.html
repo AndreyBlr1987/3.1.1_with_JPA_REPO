@@ -38,15 +38,13 @@
     <br>
     <div th:each="role : ${roles}">
         <input type="checkbox" th:name="roles"
-               th:value="${role.role}"
-               th:text="${role.role}"/>
+               th:value="${role.getId()}"
+               th:text="${role.getRole()}"/>
     </div>
     <br/>
-
     <input type="submit" value="Create new User"/>
     <br>
     <br>
-
 </form>
 <a th:href="@{/logout}">EXIT</a>
 </body>

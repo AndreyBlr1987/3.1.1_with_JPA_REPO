@@ -13,10 +13,8 @@ public interface RoleService {
 
     Role findByRole(String name);
 
-    HashSet<Role> getSetOfRoles(String[] roleNames);
+    HashSet<Role> getSetOfRoles(Integer[] roleNames);
 
-
-
-    Role getById(int id);
+   Role findById(int id);
 
 }

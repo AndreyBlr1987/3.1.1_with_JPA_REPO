@@ -47,7 +47,7 @@ public class User implements UserDetails {
     @JoinTable(
             name = "users_roles"
             , joinColumns = @JoinColumn(name = "users_id")
-            , inverseJoinColumns = @JoinColumn(name = "roles_id"))
+            , inverseJoinColumns = @JoinColumn(name = "roles_role"))
     private Set<Role> roles = new HashSet<>();
 
     public User() {

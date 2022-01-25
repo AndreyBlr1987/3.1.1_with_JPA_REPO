@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +24,6 @@ public class AdminController {
 
     private final UserService userService;
     private final RoleService roleService;
-
-
 
     @Autowired
     public AdminController(UserService userService, RoleService roleService) {
@@ -50,8 +47,6 @@ public class AdminController {
         return "editPage";
     }
 
-
-
     @GetMapping(value = "/add")
     public String addPage(Model model) {
         User user = new User();
@@ -62,16 +57,15 @@ public class AdminController {
 
     @PostMapping("/edit")
     public String editUser(@ModelAttribute User user,
-                           @RequestParam("roles") String[] role) {
+                           @RequestParam("roles") Integer[] role) {
         user.setRoles(roleService.getSetOfRoles(role));
         userService.edit(user);
         return "redirect:/admin";
     }
 
-
     @PostMapping(value = "/add")
     public String addUser(@ModelAttribute User user,
-                          @RequestParam(value = "roles") String[] roles) {
+                          @RequestParam(value = "roles") Integer[] roles) {
         user.setRoles(roleService.getSetOfRoles(roles));
         userService.add(user);
         return "redirect:/admin";

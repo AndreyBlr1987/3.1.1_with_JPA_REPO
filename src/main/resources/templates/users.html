@@ -26,7 +26,7 @@
         <td th:text="${user.getEmail()}">login</td>
         <td>
             <div th:each="role : ${user.getRoles()}">
-                <p th:text="${role.getRole()}"></p>
+                <p th:text="${role.role}"></p>
             </div>
         <td>
             <a th:href="@{/admin/edit/{id}(id=${user.getId()})}">EDIT </a></td>

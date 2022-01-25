@@ -36,18 +36,17 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public HashSet<Role> getSetOfRoles(String[] roleNames) {
+    public HashSet<Role> getSetOfRoles(Integer[] roleNames) {
         Set<Role> roleSet = new HashSet<>();
-        for (String role : roleNames) {
-            roleSet.add(findByRole(role));
+        for (Integer role : roleNames) {
+            roleSet.add(findById(role));
             }
         return (HashSet) roleSet;
     }
 
     @Override
-    public Role getById(int id) {
-        Optional<Role> optionalUser = roleRepository.findById(id);
-        return optionalUser.get();
+    public Role findById(int id) {
+        return roleRepository.getById(id);
     }
 
 
