@@ -16,9 +16,7 @@ import java.util.Set;
 @Transactional
 public class RoleServiceImpl implements RoleService {
 
-
     private RoleRepository roleRepository;
-
 
     @Autowired
     public RoleServiceImpl(RoleRepository roleRepository) {
